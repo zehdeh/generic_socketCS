@@ -1,4 +1,5 @@
 #include "net/generic/ConnectionSettings.h"
+#include "net/server/ServerSocket.h"
 
 void ConnectionSettings::serverIO(ServerSocket& socket) {
 	std::string buffer;
