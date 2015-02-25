@@ -1,5 +1,4 @@
 #include "net/generic/ConnectionSettings.h"
-#include <string>
 #include <iostream>
 
 void ConnectionSettings::clientIO() {

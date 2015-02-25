@@ -2,6 +2,7 @@
 #define CONNECTIONSETTINGS_HEADER
 
 #include <cstring>
+#include <string>
 class ServerSocket;
 
 class ConnectionSettings {
