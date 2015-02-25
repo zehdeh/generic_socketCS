@@ -1,7 +1,7 @@
 #ifndef SERVERSOCKET_HEADER
 #define SERVERSOCKET_HEADER
 
-#include "socketCS/Socket.h"
+#include "net/generic/Socket.h"
 
 const int MAXCONNECTIONS = 5;
 
