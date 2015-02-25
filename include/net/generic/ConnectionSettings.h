@@ -9,12 +9,14 @@ class ConnectionSettings {
 public:
 	void serverIO(ServerSocket& socket) {
 		std::string buffer;
-		acceptSocket >> buffer;
+		socket >> buffer;
 		mode = buffer[0];
 
-		acceptSocket >> buffer;
+		socket >> buffer;
 		cipherNo = atoi(buffer.c_str());
-		std::cout << msg1 << std::endl;
+
+		socket >> buffer;
+		text = buffer;
 	}
 	void clientIO() {
 		std::string inputBuffer;
