@@ -22,6 +22,9 @@
 *.a
 *.lib
 
+# Temporary Files
+*.swp
+
 # Executables
 *.exe
 *.out
