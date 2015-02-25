@@ -2,22 +2,11 @@
 #define CONNECTIONSETTINGS_HEADER
 
 #include <cstring>
-#include "net/server/ServerSocket.h"
-
+class ServerSocket;
 
 class ConnectionSettings {
 public:
-	void serverIO(ServerSocket& socket) {
-		std::string buffer;
-		socket >> buffer;
-		mode = buffer[0];
-
-		socket >> buffer;
-		cipherNo = atoi(buffer.c_str());
-
-		socket >> buffer;
-		text = buffer;
-	}
+	void serverIO(ServerSocket& socket);
 	void clientIO() {
 		std::string inputBuffer;
 		while(true) {
