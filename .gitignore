@@ -23,7 +23,7 @@
 *.lib
 
 # Temporary Files
-*.swp
+.*.swp
 
 # Executables
 *.exe
