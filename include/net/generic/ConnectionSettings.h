@@ -1,7 +1,7 @@
 #ifndef CONNECTIONSETTINGS_HEADER
 #define CONNECTIONSETTINGS_HEADER
 
-#include <cstring.h>
+#include <cstring>
 
 class ServerSocket;
 
