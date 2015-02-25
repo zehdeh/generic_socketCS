@@ -6,8 +6,8 @@
 void ConnectionSettings::serverIO(ServerSocket& socket) {
 	std::string buffer;
 	socket >> buffer;
-	std::cout << buffer << std::endl;
-	mode = buffer[0];
+	int asciNo = atoi(buffer.c_str());
+	mode = asciNo;
 
 	socket >> buffer;
 	cipherNo = atoi(buffer.c_str());
