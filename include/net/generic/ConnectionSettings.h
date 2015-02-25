@@ -2,8 +2,8 @@
 #define CONNECTIONSETTINGS_HEADER
 
 #include <cstring>
+#include "net/server/ServerSocket.h"
 
-class ServerSocket;
 
 class ConnectionSettings {
 public:
