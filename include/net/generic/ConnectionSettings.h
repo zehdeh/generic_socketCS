@@ -1,8 +1,12 @@
 #ifndef CONNECTIONSETTINGS_HEADER
 #define CONNECTIONSETTINGS_HEADER
 
+class ServerSocket;
+
 class ConnectionSettings {
 public:
+	void serverIO(ServerSocket& socket) {
+	}
 	void clientIO() {
 		std::string inputBuffer;
 		while(true) {
