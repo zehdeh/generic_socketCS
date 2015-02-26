@@ -2,9 +2,11 @@
 #include <arpa/inet.h>
 
 ClientSocket::ClientSocket(const std::string host, const unsigned int port) : Socket() {
+	// Connect instantly
 	connect(host, port);
 }
 
+// Connects a socket to a server
 void ClientSocket::connect(const std::string& host, const unsigned int port) {
 	addr.sin_family = AF_INET;
 	addr.sin_port = htons(port);

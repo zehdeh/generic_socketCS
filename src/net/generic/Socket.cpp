@@ -7,6 +7,7 @@
 Socket::Socket() : socketHandle(-1){
 	memset(&addr, 0, sizeof(addr));
 
+	// Initialize Socket
 	socketHandle = socket(AF_INET, SOCK_STREAM, 0);
 	if(!isValid()) {
 		throw SocketException("Could not create socket.");
@@ -18,6 +19,8 @@ Socket::Socket() : socketHandle(-1){
 	}
 }
 
+// We introduce a kind of protocol here - messageLength followed by message.
+// This allows us to send data of arbitrary length, e.g. strings
 const Socket& Socket::operator<<(const std::string& s) const {
 	uint32_t dataLength = htonl(s.length());
 	int status = ::send(socketHandle, &dataLength, sizeof(uint32_t), MSG_CONFIRM);
@@ -32,31 +35,20 @@ const Socket& Socket::operator<<(const std::string& s) const {
 	return *this;
 }
 
+// Do two calls to recv to put back together the data
 const Socket& Socket::operator>>(std::string& s) const {
 	uint32_t dataLength;
 	int receivedBytes = 0;
 
+	// First call to get message length
 	receivedBytes = recv(socketHandle, &dataLength, sizeof(uint32_t), 0);
 	dataLength = ntohl(dataLength);
 
 	std::vector<uint8_t> rcvBuf;
 	rcvBuf.resize(dataLength, 0x00);
 
+	// Second call to get actual data
 	recv(socketHandle, &(rcvBuf[0]), dataLength, 0);
 
 	s.assign(rcvBuf.begin(), rcvBuf.end());
-		/*
-
-	memset(buf, 0, MAXRECV + 1);
-	int receivedBytes = 0;
-	receivedBytes = recv(socketHandle, buf, MAXRECV, 0);
-	
-	if(receivedBytes == 0 || receivedBytes < -1) {
-		throw SocketException("Error while receiving data from socket");
-	} else {
-		s = buf;
-	}
-
-	*/
-	return *this;
 }
